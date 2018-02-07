@@ -72,7 +72,7 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
     # Running a 1x1 convolution on Layer 4 of VGG16
     conv_1x1_4 = tf.layers.conv2d(vgg_layer4_out, num_classes, 1, padding='same', kernel_regularizer = tf.contrib.layers.l2_regularizer(1e-3))
 
-    # Skip connection connecting Upscaled output of Layer 7 and 1x1 Convolution output of Layer 4
+    # Skip connection connecting Upsampled output of Layer 7 and 1x1 Convolution output of Layer 4
     skip_1 = tf.add(output_7, conv_1x1_4)
 
     # Applying a deconvolution on Layer 4 output after the skip implementation for Upsampling
